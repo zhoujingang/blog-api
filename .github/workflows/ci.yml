@@ -42,10 +42,12 @@ jobs:
           draft: false # 是否是草稿
           prerelease: false # 是否是预发布
 
+
+      - run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
       # 第四步：上传构建结果到 Release（把打包的tgz上传到Release）
       - name: Upload Release Asset
         id: upload-release-asset
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
         uses: actions/upload-release-asset@master
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
