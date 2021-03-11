@@ -71,6 +71,6 @@ jobs:
             wget https://github.com/zhoujingang/blog-api/releases/download/${{ steps.vars.outputs.tag }}/release.tgz
             tar zxvf release.tgz
             npm install --production
-            npm run dev
+            npm start
 
             
