@@ -1,0 +1,9 @@
+{
+    "apps": [
+      {
+        "name": "bolg",
+        "script": "npm", 
+        "args": "start" 
+      }
+    ]
+  }

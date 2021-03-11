@@ -30,7 +30,7 @@ jobs:
         uses: actions/setup-node@master
       - run: npm install
       - run: npm run build
-      - run: tar -zcvf release.tgz dist package.json package-lock.json
+      - run: tar -zcvf release.tgz dist package.json package-lock.json pm2.config.json
       # 把.nuxt、nuxt.config.js等文件，打包压缩为release.tgz
 
       # 第三步：发布 Release
@@ -71,6 +71,6 @@ jobs:
             wget https://github.com/zhoujingang/blog-api/releases/download/${{ steps.vars.outputs.tag }}/release.tgz
             tar zxvf release.tgz
             npm install --production
-            npm start
+            pm2 reload pm2.config.json
 
             
