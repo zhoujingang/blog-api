@@ -12,8 +12,11 @@ export class APIController {
   blogerService
 
   @Get('/list')
-  async getUser(@Query() uid) {
-    const res = await this.blogerService.getList({});
+  async getUser(@Query(ALL) query: any) {
+    const pn = Number(query.pn) || 1;
+    const rn = Number(query.rn) || 10;
+    const condition = {};
+    const res = await this.blogerService.getList(condition, (pn - 1) * rn,rn);
     return { success: true, message: 'OK', data: res };
   }
 
