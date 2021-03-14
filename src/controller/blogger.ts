@@ -17,13 +17,13 @@ export class APIController {
     const rn = Number(query.rn) || 10;
     const condition = {};
     const res = await this.blogerService.getList(condition, (pn - 1) * rn,rn);
-    return { success: true, message: 'OK', data: res };
+    return { code: 200, message: 'OK', data: res };
   }
 
   @Post('/add')
   async add(@Body(ALL) body: any) {
     const res = await this.blogerService.add(body);
-    return { success: true, message: 'OK', data: res };
+    return { code: 200, message: 'OK', data: res };
 
   }
 }
